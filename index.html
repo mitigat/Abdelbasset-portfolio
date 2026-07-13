@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio  3D Artist &amp; Technical Generalist</title>
+<title>Portfolio — 3D Artist &amp; Technical Generalist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -223,6 +223,13 @@
   }
   .modal-media{ width:100%; aspect-ratio:16/9; background:#241A3C; }
   .modal-media img, .modal-media video{ width:100%; height:100%; object-fit:cover; display:block; }
+  .gallery-strip{ display:flex; gap:8px; padding:12px; background:#180F27; }
+  .gallery-thumb{
+    width:64px; height:64px; object-fit:cover; cursor:pointer; opacity:0.55;
+    border:1px solid var(--line-strong); transition:opacity .15s, border-color .15s;
+  }
+  .gallery-thumb:hover{ opacity:0.85; }
+  .gallery-thumb.active{ opacity:1; border-color:var(--accent); }
   .modal-body{ padding:32px; }
   .modal-close{
     position:absolute; top:14px; right:14px; width:34px; height:34px; background:var(--accent); color:#140D1F;
@@ -245,7 +252,7 @@
 
 <header>
   <div class="wrap nav">
-    <a href="#top" class="brand">LSTR-1337<span>.</span></a>
+    <a href="#top" class="brand">YOUR NAME<span>.</span></a>
     <nav>
       <ul>
         <li><a href="#work">Work</a></li>
@@ -259,9 +266,9 @@
 
 <main id="top">
   <section class="hero wrap">
-    <div class="eyebrow">3D Generalist, Hard Surface &amp; Environment</div>
+    <div class="eyebrow">3D Generalist — Hard Surface &amp; Environment</div>
     <h1>Assets built for <em>games</em>, spaces built for <em>living</em>.</h1>
-    <p class="hero-sub">I model, retopologize, and texture from character clothing and weapons for shipped game projects, to architectural interiors built straight from floor plans. Everything below moved through a full high-to-low poly pipeline.</p>
+    <p class="hero-sub">I model, retopologize, and texture — from character clothing and weapons for shipped game projects, to architectural interiors built straight from floor plans. Everything below moved through a full high-to-low poly pipeline.</p>
     <div class="spec-strip">
       <div>
         <div class="spec-label">Focus</div>
@@ -269,7 +276,7 @@
       </div>
       <div>
         <div class="spec-label">Tools</div>
-        <div class="spec-value">Blender · Substance · marmoset toolbag · embergen</div>
+        <div class="spec-value">Blender · Substance</div>
       </div>
       <div>
         <div class="spec-label">Availability</div>
@@ -281,13 +288,14 @@
   <section class="section wrap" id="work">
     <div class="section-head">
       <h2 class="section-title">Selected Work</h2>
-      <span class="section-num mono">DRAWING SET — 06 SHEETS</span>
+      <span class="section-num mono">DRAWING SET — 17 SHEETS</span>
     </div>
 
     <div class="filters" id="filters">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="game">Game Assets</button>
       <button class="filter-btn" data-filter="arch">Architecture</button>
+      <button class="filter-btn" data-filter="custom">Custom Work / Ads</button>
       <button class="filter-btn" data-filter="technical">Technical</button>
     </div>
 
@@ -342,8 +350,8 @@
         </div>
       </div>
       <div class="foot-meta">
-        <span>© 2026 Abdelbasset maaz · LSTR-1337</span>
-        <span>The only limit to creativity is your imagination.</span>
+        <span>© 2026 YOUR NAME</span>
+        <span>Built with a blueprint, not a template.</span>
       </div>
     </div>
   </footer>
@@ -353,6 +361,7 @@
   <div class="modal">
     <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
     <div class="modal-media" id="modalMedia"></div>
+    <div class="gallery-strip" id="galleryStrip" style="display:none;"></div>
     <div class="modal-body">
       <div class="modal-cat" id="modalCat"></div>
       <h3 class="modal-title" id="modalTitle"></h3>
@@ -372,40 +381,158 @@
    ============================================================ */
 const PROJECTS = [
   {
-    title: "Character Clothing Set",
+    title: "Merchant's Hooded Robe",
     category: "game",
     catLabel: "Game Asset",
-    mediaType: "none",
-    mediaSrc: "",
-    desc: "Game-ready clothing set for a third-person character, built to a strict poly budget with baked normal detail for cloth folds and seams.",
-    tools: ["Blender", "Substance Painter", "Marmoset"]
-  },
-  {
-    title: "Sidearm — Hard Surface",
-    category: "game",
-    catLabel: "Game Asset",
-    mediaType: "none",
-    mediaSrc: "",
-    desc: "High-to-low poly weapon asset with full PBR texture set, delivered engine-ready with LODs.",
+    mediaType: "image",
+    mediaSrc: "media/merchant-robe.jpg",
+    desc: "Game-ready hooded robe outfit fitted to a base mannequin, with a woven cloth shader and a stitched leather belt detail at the waist.",
     tools: ["Blender", "Substance Painter"]
   },
   {
-    title: "Residential Interior — Floor Plan to 3D",
+    title: "Frostbite Blade",
+    category: "game",
+    catLabel: "Game Asset",
+    mediaType: "image",
+    mediaSrc: "media/frostbite-blade.jpg",
+    desc: "Curved fantasy sword with a frost-worn steel blade and a moss-grown handle, hand-painted for a stylised weathered look.",
+    tools: ["Blender", "Substance Painter"]
+  },
+  {
+    title: "Sunfire Scimitar",
+    category: "game",
+    catLabel: "Game Asset",
+    mediaType: "image",
+    mediaSrc: "media/sunfire-scimitar.jpg",
+    desc: "Ornate gold scimitar with a rusted, battle-worn finish and an openwork crescent detail near the tip.",
+    tools: ["Blender", "Substance Painter"]
+  },
+  {
+    title: "Tactical Sidearm",
+    category: "game",
+    catLabel: "Game Asset",
+    mediaType: "image",
+    mediaSrc: "media/tactical-sidearm.jpg",
+    desc: "Modern compact pistol with a textured polymer grip and worn-metal slide, modeled and baked for a realistic PBR finish.",
+    tools: ["Blender", "Substance Painter", "Marmoset"]
+  },
+  {
+    title: "Gilded Commander 1911",
+    category: "game",
+    catLabel: "Game Asset",
+    mediaType: "image",
+    mediaSrc: "media/gilded-1911.jpg",
+    desc: "Fully gold-plated 1911-style pistol with engraved filigree and mother-of-pearl grip panels, built as a high-value cosmetic variant.",
+    tools: ["Blender", "Substance Painter"]
+  },
+  {
+    title: "The Last Message — Leather Satchel",
+    category: "game",
+    catLabel: "Game Asset",
+    mediaType: "image",
+    mediaSrc: "media/satchel-top.jpg",
+    gallery: ["media/satchel-top.jpg", "media/satchel-back.jpg"],
+    desc: "Worn leather satchel prop with a branded wax-stamped clasp, stitched edging and a shoulder strap, modeled for a narrative item pickup.",
+    tools: ["Blender", "Substance Painter"]
+  },
+  {
+    title: "Hollywood Vanity Set",
     category: "arch",
     catLabel: "Architecture",
-    mediaType: "none",
-    mediaSrc: "",
-    desc: "Full interior built directly from a 2D floor plan, staged with lighting and materials for a photoreal walkthrough render.",
+    mediaType: "image",
+    mediaSrc: "media/vanity-set.jpg",
+    desc: "Backstage dressing table scene with a bulb-lit mirror arch, velvet drapery and a tufted stool, staged and lit for a warm theatrical mood.",
     tools: ["Blender", "Cycles"]
   },
   {
-    title: "Exterior Massing Study",
+    title: "Stylised Bedroom",
     category: "arch",
     catLabel: "Architecture",
-    mediaType: "none",
-    mediaSrc: "",
-    desc: "Exterior massing and material pass for a single-family home, exported as a turntable clip.",
+    mediaType: "image",
+    mediaSrc: "media/stylised-bedroom.jpg",
+    desc: "Cel-shaded bedroom interior with a built-in bookshelf and sunset-lit window, exploring a flat toon-shaded lighting approach.",
     tools: ["Blender", "Cycles"]
+  },
+  {
+    title: "Modern Kitchen Interior",
+    category: "arch",
+    catLabel: "Architecture",
+    mediaType: "image",
+    mediaSrc: "media/modern-kitchen.jpg",
+    desc: "Photoreal corner kitchen build with oak cabinetry, dark tile splashback and an integrated oven, lit with natural daylight.",
+    tools: ["Blender", "Cycles"]
+  },
+  {
+    title: "Pure Beauty — Product Render",
+    category: "custom",
+    catLabel: "Custom Work / Ads",
+    mediaType: "image",
+    mediaSrc: "media/pure-beauty-jar.jpg",
+    desc: "Studio-lit cosmetics jar render with custom branding and label, built as a mockup for a client product shoot.",
+    tools: ["Blender", "Cycles"]
+  },
+  {
+    title: "Sauvage — Product Ad Concept",
+    category: "custom",
+    catLabel: "Custom Work / Ads",
+    mediaType: "image",
+    mediaSrc: "media/sauvage-concept.jpg",
+    desc: "Fragrance ad concept pairing a glass bottle render with a fighter jet flyby, composited for a bold action-driven campaign look.",
+    tools: ["Blender", "Cycles", "Compositing"]
+  },
+  {
+    title: "Airbase Fragrance Concept",
+    category: "custom",
+    catLabel: "Custom Work / Ads",
+    mediaType: "image",
+    mediaSrc: "media/airbase-fragrance.jpg",
+    desc: "Alternate fragrance ad concept set against a desert airbase backdrop, exploring a more rugged, cinematic product placement.",
+    tools: ["Blender", "Cycles", "Compositing"]
+  },
+  {
+    title: "Synthwave Skyline",
+    category: "custom",
+    catLabel: "Custom Work / Ads",
+    mediaType: "image",
+    mediaSrc: "media/synthwave-skyline.jpg",
+    desc: "Retro synthwave cityscape with a chrome sedan on a reflective highway, built around a saturated sunset palette and mirrored water.",
+    tools: ["Blender", "Cycles", "Compositing"]
+  },
+  {
+    title: "Night City Flyover",
+    category: "custom",
+    catLabel: "Custom Work / Ads",
+    mediaType: "image",
+    mediaSrc: "media/nightcity-flyover.jpg",
+    desc: "Aerial cyberpunk street scene lined with animated billboards and traffic, built to explore dense neon-lit city composition.",
+    tools: ["Blender", "Cycles"]
+  },
+  {
+    title: "Night City — HUD Overlay",
+    category: "custom",
+    catLabel: "Custom Work / Ads",
+    mediaType: "image",
+    mediaSrc: "media/nightcity-hud.jpg",
+    desc: "First-person cyberpunk skyline shot with a UI/HUD overlay pass, framing a distant tower billboard through a vehicle window.",
+    tools: ["Blender", "Cycles", "Compositing"]
+  },
+  {
+    title: "Warzone Skyline",
+    category: "custom",
+    catLabel: "Custom Work / Ads",
+    mediaType: "image",
+    mediaSrc: "media/warzone-skyline.jpg",
+    desc: "Silhouetted ruined cityscape under a burning orange sky, with a fighter jet passing overhead — a mood study in scale and atmosphere.",
+    tools: ["Blender", "Cycles", "Compositing"]
+  },
+  {
+    title: "Missile Strike — Ocean Chase",
+    category: "custom",
+    catLabel: "Custom Work / Ads",
+    mediaType: "image",
+    mediaSrc: "media/missile-chase.jpg",
+    desc: "Dynamic low-altitude missile shot skimming the ocean surface, built around motion blur and spray effects for a high-speed feel.",
+    tools: ["Blender", "Cycles", "Compositing"]
   },
   {
     title: "Mesh Simplification Addon",
@@ -415,15 +542,6 @@ const PROJECTS = [
     mediaSrc: "",
     desc: "Blender Python addon implementing Vertex Clustering, Edge Collapse and QEM decimation, benchmarked for 3D-print infill efficiency.",
     tools: ["Python", "Blender API"]
-  },
-  {
-    title: "NFS Tribute Animation",
-    category: "technical",
-    catLabel: "Technical / R&D",
-    mediaType: "none",
-    mediaSrc: "",
-    desc: "30-second animated short featuring modeled and lit vehicles, scored and mixed for short-form video platforms.",
-    tools: ["Blender", "DaVinci Resolve"]
   }
 ];
 
@@ -559,6 +677,7 @@ filters.addEventListener('click', e => {
 /* Modal */
 const overlay = document.getElementById('modalOverlay');
 const modalMedia = document.getElementById('modalMedia');
+const galleryStrip = document.getElementById('galleryStrip');
 const modalCat = document.getElementById('modalCat');
 const modalTitle = document.getElementById('modalTitle');
 const modalDesc = document.getElementById('modalDesc');
@@ -567,6 +686,22 @@ let lastFocused = null;
 
 function openModal(p){
   modalMedia.innerHTML = mediaMarkup(p).replace('placeholder-label', 'placeholder-label mono');
+  if(p.gallery && p.gallery.length > 1){
+    galleryStrip.style.display = 'flex';
+    galleryStrip.innerHTML = p.gallery.map((src, i) =>
+      `<img src="${src}" class="gallery-thumb${src === p.mediaSrc ? ' active' : ''}" data-src="${src}" alt="${p.title} angle ${i+1}">`
+    ).join('');
+    galleryStrip.querySelectorAll('.gallery-thumb').forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        modalMedia.innerHTML = `<img src="${thumb.dataset.src}" alt="${p.title}">`;
+        galleryStrip.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+      });
+    });
+  } else {
+    galleryStrip.style.display = 'none';
+    galleryStrip.innerHTML = '';
+  }
   modalCat.textContent = p.catLabel;
   modalTitle.textContent = p.title;
   modalDesc.textContent = p.desc;
