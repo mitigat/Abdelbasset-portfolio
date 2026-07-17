@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bag — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+
+</head>
+<body>
+
+<div class="bg-drift"></div>
+<div class="bg-letters" id="bgLetters"></div>
+
+
+<header>
+  <div class="wrap nav">
+    <a href="../index.html" class="brand">YOUR NAME<span>.</span></a>
+    <nav>
+      <ul>
+        <li><a href="../index.html#work">Work</a></li>
+        <li><a href="../index.html#process">Process</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="cv-btn" href="#" id="cvLink">Download CV</a>
+  </div>
+</header>
+
+
+<main>
+  <section class="project-hero wrap">
+    <a href="../index.html#work" class="back-link">&#8592; All Work</a>
+    <div class="project-meta-row">
+      <span class="project-cat mono">Game Asset</span>
+      <span class="section-num mono">SHEET 06/18</span>
+    </div>
+    <h1 class="project-title">Bag</h1>
+  </section>
+
+  <section class="carousel wrap">
+    <div class="carousel-frame" id="carouselFrame"></div>
+    <span class="carousel-counter" id="carouselCounter"></span>
+    <div class="carousel-thumbs" id="carouselThumbs"></div>
+  </section>
+
+  <section class="project-body wrap">
+    <div>
+      <p class="project-desc">Worn leather satchel prop with a branded wax-stamped clasp, stitched edging and a shoulder strap, modeled for a narrative item pickup.</p>
+    </div>
+    <div class="project-side">
+      <div class="side-block">
+        <div class="side-label">Tools</div>
+        <div class="chip-row"><span class="chip">Blender</span><span class="chip">Substance Painter</span></div>
+      </div>
+      <div class="side-block">
+        <div class="side-label">Category</div>
+        <div class="chip-row"><span class="chip">Game Asset</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <h2 class="footer-title">Have a project in mind? I'm open to freelance work.</h2>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:youremail@example.com">youremail@example.com</a>
+          <a href="#">ArtStation &#8599;</a>
+          <a href="#">LinkedIn &#8599;</a>
+          <a href="#">GitHub &#8599;</a>
+        </div>
+      </div>
+      <div class="foot-meta">
+        <span>&copy; 2026 YOUR NAME</span>
+        <span>Built with a blueprint, not a template.</span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+const PROJECT_TITLE = "Bag";
+const PROJECT_SLUG = "bag";
+</script>
+<script src="../background.js" defer></script>
+<script src="../carousel.js" defer></script>
+</body>
+</html>

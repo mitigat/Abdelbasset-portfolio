@@ -10,76 +10,58 @@ os.makedirs(PROJ_DIR, exist_ok=True)
 #         Add more entries here later as you get more photos.
 # ---------------------------------------------------------------
 PROJECTS = [
-    dict(title="Merchant's Hooded Robe", category="game", catLabel="Game Asset",
-         images=["media/merchant-robe.jpg"],
-         desc="Game-ready hooded robe outfit fitted to a base mannequin, with a woven cloth shader and a stitched leather belt detail at the waist.",
+    dict(title="NPC", category="game", catLabel="Game Asset", slug="npc",
+         desc="Hooded character outfit built for an NPC, with a woven cloth shader and a stitched leather belt detail at the waist.",
          tools=["Blender", "Substance Painter"]),
-    dict(title="Frostbite Blade", category="game", catLabel="Game Asset",
-         images=["media/frostbite-blade.jpg"],
+    dict(title="Great Sword", category="game", catLabel="Game Asset", slug="great-sword",
          desc="Curved fantasy sword with a frost-worn steel blade and a moss-grown handle, hand-painted for a stylised weathered look.",
          tools=["Blender", "Substance Painter"]),
-    dict(title="Sunfire Scimitar", category="game", catLabel="Game Asset",
-         images=["media/sunfire-scimitar.jpg"],
+    dict(title="Gold Sword", category="game", catLabel="Game Asset", slug="gold-sword",
          desc="Ornate gold scimitar with a rusted, battle-worn finish and an openwork crescent detail near the tip.",
          tools=["Blender", "Substance Painter"]),
-    dict(title="Tactical Sidearm", category="game", catLabel="Game Asset",
-         images=["media/tactical-sidearm.jpg"],
+    dict(title="Glock", category="game", catLabel="Game Asset", slug="glock",
          desc="Modern compact pistol with a textured polymer grip and worn-metal slide, modeled and baked for a realistic PBR finish.",
          tools=["Blender", "Substance Painter", "Marmoset"]),
-    dict(title="Gilded Commander 1911", category="game", catLabel="Game Asset",
-         images=["media/gilded-1911.jpg"],
+    dict(title="Colt", category="game", catLabel="Game Asset", slug="colt",
          desc="Fully gold-plated 1911-style pistol with engraved filigree and mother-of-pearl grip panels, built as a high-value cosmetic variant.",
          tools=["Blender", "Substance Painter"]),
-    dict(title="The Last Message — Leather Satchel", category="game", catLabel="Game Asset",
-         images=["media/satchel-top.jpg", "media/satchel-back.jpg"],
+    dict(title="Bag", category="game", catLabel="Game Asset", slug="bag",
          desc="Worn leather satchel prop with a branded wax-stamped clasp, stitched edging and a shoulder strap, modeled for a narrative item pickup.",
          tools=["Blender", "Substance Painter"]),
-    dict(title="Hollywood Vanity Set", category="arch", catLabel="Architecture",
-         images=["media/vanity-set.jpg"],
+    dict(title="Boojie Stand", category="arch", catLabel="Architecture", slug="boojie-stand",
          desc="Backstage dressing table scene with a bulb-lit mirror arch, velvet drapery and a tufted stool, staged and lit for a warm theatrical mood.",
          tools=["Blender", "Cycles"]),
-    dict(title="Stylised Bedroom", category="arch", catLabel="Architecture",
-         images=["media/stylised-bedroom.jpg"],
+    dict(title="Stylised Bedroom", category="arch", catLabel="Architecture", slug="stylised-bedroom",
          desc="Cel-shaded bedroom interior with a built-in bookshelf and sunset-lit window, exploring a flat toon-shaded lighting approach.",
          tools=["Blender", "Cycles"]),
-    dict(title="Modern Kitchen Interior", category="arch", catLabel="Architecture",
-         images=["media/modern-kitchen.jpg"],
-         desc="Photoreal corner kitchen build with oak cabinetry, dark tile splashback and an integrated oven, lit with natural daylight.",
-         tools=["Blender", "Cycles"]),
-    dict(title="Pure Beauty — Product Render", category="custom", catLabel="Custom Work / Ads",
-         images=["media/pure-beauty-jar.jpg"],
+    dict(title="Kitchen", category="arch", catLabel="Architecture", slug="kitchen",
+         desc="Walkthrough of a photoreal corner kitchen build with oak cabinetry, dark tile splashback and an integrated oven, lit with natural daylight.",
+         tools=["Blender", "Cycles", "DaVinci Resolve"]),
+    dict(title="Pure Beauty — Product Render", category="custom", catLabel="Custom Work / Ads", slug="pure-beauty-product-render",
          desc="Studio-lit cosmetics jar render with custom branding and label, built as a mockup for a client product shoot.",
          tools=["Blender", "Cycles"]),
-    dict(title="Sauvage — Product Ad Concept", category="custom", catLabel="Custom Work / Ads",
-         images=["media/sauvage-concept.jpg"],
-         desc="Fragrance ad concept pairing a glass bottle render with a fighter jet flyby, composited for a bold action-driven campaign look.",
+    dict(title="Dior Xeagle Slow Ad", category="custom", catLabel="Custom Work / Ads", slug="dior-xeagle-slow-ad",
+         desc="Slow-motion fragrance ad concept pairing a glass bottle render with a fighter jet flyby, composited for a bold action-driven campaign look.",
          tools=["Blender", "Cycles", "Compositing"]),
-    dict(title="Airbase Fragrance Concept", category="custom", catLabel="Custom Work / Ads",
-         images=["media/airbase-fragrance.jpg"],
-         desc="Alternate fragrance ad concept set against a desert airbase backdrop, exploring a more rugged, cinematic product placement.",
+    dict(title="Sauvage Ad", category="custom", catLabel="Custom Work / Ads", slug="sauvage-ad",
+         desc="Fragrance ad concept set against a desert airbase backdrop, exploring a rugged, cinematic product placement.",
          tools=["Blender", "Cycles", "Compositing"]),
-    dict(title="Synthwave Skyline", category="custom", catLabel="Custom Work / Ads",
-         images=["media/synthwave-skyline.jpg"],
+    dict(title="Infinite Drive", category="custom", catLabel="Custom Work / Ads", slug="infinite-drive",
          desc="Retro synthwave cityscape with a chrome sedan on a reflective highway, built around a saturated sunset palette and mirrored water.",
          tools=["Blender", "Cycles", "Compositing"]),
-    dict(title="Night City Flyover", category="custom", catLabel="Custom Work / Ads",
-         images=["media/nightcity-flyover.jpg"],
-         desc="Aerial cyberpunk street scene lined with animated billboards and traffic, built to explore dense neon-lit city composition.",
+    dict(title="Dystopian", category="custom", catLabel="Custom Work / Ads", slug="dystopian",
+         desc="Aerial cyberpunk street flyover lined with animated billboards and traffic, built to explore dense neon-lit city composition.",
          tools=["Blender", "Cycles"]),
-    dict(title="Night City — HUD Overlay", category="custom", catLabel="Custom Work / Ads",
-         images=["media/nightcity-hud.jpg"],
+    dict(title="Cyber City", category="custom", catLabel="Custom Work / Ads", slug="cyber-city",
          desc="First-person cyberpunk skyline shot with a UI/HUD overlay pass, framing a distant tower billboard through a vehicle window.",
          tools=["Blender", "Cycles", "Compositing"]),
-    dict(title="Warzone Skyline", category="custom", catLabel="Custom Work / Ads",
-         images=["media/warzone-skyline.jpg"],
+    dict(title="HD2 City", category="custom", catLabel="Custom Work / Ads", slug="hd2-city",
          desc="Silhouetted ruined cityscape under a burning orange sky, with a fighter jet passing overhead — a mood study in scale and atmosphere.",
          tools=["Blender", "Cycles", "Compositing"]),
-    dict(title="Missile Strike — Ocean Chase", category="custom", catLabel="Custom Work / Ads",
-         images=["media/missile-chase.jpg"],
+    dict(title="Custom Jet", category="custom", catLabel="Custom Work / Ads", slug="custom-jet",
          desc="Dynamic low-altitude missile shot skimming the ocean surface, built around motion blur and spray effects for a high-speed feel.",
          tools=["Blender", "Cycles", "Compositing"]),
-    dict(title="Mesh Simplification Addon", category="technical", catLabel="Technical / R&D",
-         images=[],
+    dict(title="Mesh Simplification Addon", category="technical", catLabel="Technical / R&D", slug="mesh-simplification-addon",
          desc="Blender Python addon implementing Vertex Clustering, Edge Collapse and QEM decimation, benchmarked for 3D-print infill efficiency.",
          tools=["Python", "Blender API"]),
 ]
@@ -96,7 +78,7 @@ for p in PROJECTS:
 
 print(f"{len(PROJECTS)} projects loaded.")
 for p in PROJECTS:
-    print(" -", p["slug"], f"({len(p['images'])} imgs)")
+    print(" -", p["slug"])
 
 # ---------------------------------------------------------------
 # TEMPLATES
@@ -160,7 +142,6 @@ def js_str_array(items):
 projects_js = "const PROJECTS = [\n"
 for p in PROJECTS:
     tools_js = js_str_array(p["tools"])
-    images_js = js_str_array(p["images"])
     desc_js = p["desc"].replace('"', '\\"')
     title_js = p["title"].replace('"', '\\"')
     projects_js += f'''  {{
@@ -168,7 +149,6 @@ for p in PROJECTS:
     title: "{title_js}",
     category: "{p["category"]}",
     catLabel: "{p["catLabel"]}",
-    images: {images_js},
     desc: "{desc_js}",
     tools: {tools_js}
   }},
@@ -261,8 +241,6 @@ print("index.html written.")
 # ---------------------------------------------------------------
 
 for idx, p in enumerate(PROJECTS, start=1):
-    images_rel = ["../" + img for img in p["images"]]
-    images_js = js_str_array(images_rel)
     title_js = p["title"].replace('"', '\\"')
     tools_chips = "".join(f'<span class="chip">{t}</span>' for t in p["tools"])
 

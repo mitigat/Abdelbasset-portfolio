@@ -1,6 +1,8 @@
 /* Shared script for project detail pages.
-   Auto-detects photos by trying media/{slug}-1.jpg, {slug}-2.jpg, {slug}-3.jpg ...
-   Just drop numbered files into /media named after the project's slug — no code edits needed.
+   Detection order:
+     1. media/{slug}.mp4 — if it exists, show a video player (poster = media/{slug}-1.jpg).
+     2. Otherwise, probe media/{slug}-1.jpg, {slug}-2.jpg, ... and build a photo carousel.
+   Just drop correctly-named files into /media — no code edits needed.
    Expects a global PROJECT_SLUG string (and PROJECT_TITLE) defined inline before this file loads. */
 (function(){
   const frame = document.getElementById('carouselFrame');
@@ -14,7 +16,7 @@
   let images = [];
   let current = 0;
 
-  function probe(n){
+  function probeImage(n){
     return new Promise(resolve => {
       const src = `../media/${slug}-${n}.jpg`;
       const img = new Image();
@@ -24,13 +26,21 @@
     });
   }
 
-  async function detectImages(){
-    for(let n = 1; n <= MAX_PROBE; n++){
-      const src = await probe(n);
-      if(!src) break; // stop at first gap in numbering
-      images.push(src);
-    }
-    renderFrame();
+  function probeVideo(){
+    return new Promise(resolve => {
+      const src = `../media/${slug}.mp4`;
+      const v = document.createElement('video');
+      v.onloadedmetadata = () => resolve(src);
+      v.onerror = () => resolve(null);
+      v.src = src;
+    });
+  }
+
+  function renderVideo(src){
+    const poster = `../media/${slug}-1.jpg`;
+    frame.innerHTML = `<video src="${src}" poster="${poster}" controls playsinline style="width:100%;height:100%;object-fit:contain;background:#140D1F;"></video>`;
+    if(counter) counter.style.display = 'none';
+    if(thumbs) thumbs.innerHTML = '';
   }
 
   function renderFrame(){
@@ -79,6 +89,21 @@
     if(e.key === 'ArrowRight') go(current + 1);
   });
 
-  detectImages();
+  async function init(){
+    const videoSrc = await probeVideo();
+    if(videoSrc){
+      renderVideo(videoSrc);
+      return;
+    }
+    for(let n = 1; n <= MAX_PROBE; n++){
+      const src = await probeImage(n);
+      if(!src) break; // stop at first gap in numbering
+      images.push(src);
+    }
+    renderFrame();
+  }
+
+  init();
 })();
+
 

@@ -108,65 +108,58 @@
 <script>
 const PROJECTS = [
   {
-    slug: "merchants-hooded-robe",
-    title: "Merchant's Hooded Robe",
+    slug: "npc",
+    title: "NPC",
     category: "game",
     catLabel: "Game Asset",
-    images: ["media/merchant-robe.jpg"],
-    desc: "Game-ready hooded robe outfit fitted to a base mannequin, with a woven cloth shader and a stitched leather belt detail at the waist.",
+    desc: "Hooded character outfit built for an NPC, with a woven cloth shader and a stitched leather belt detail at the waist.",
     tools: ["Blender", "Substance Painter"]
   },
   {
-    slug: "frostbite-blade",
-    title: "Frostbite Blade",
+    slug: "great-sword",
+    title: "Great Sword",
     category: "game",
     catLabel: "Game Asset",
-    images: ["media/frostbite-blade.jpg"],
     desc: "Curved fantasy sword with a frost-worn steel blade and a moss-grown handle, hand-painted for a stylised weathered look.",
     tools: ["Blender", "Substance Painter"]
   },
   {
-    slug: "sunfire-scimitar",
-    title: "Sunfire Scimitar",
+    slug: "gold-sword",
+    title: "Gold Sword",
     category: "game",
     catLabel: "Game Asset",
-    images: ["media/sunfire-scimitar.jpg"],
     desc: "Ornate gold scimitar with a rusted, battle-worn finish and an openwork crescent detail near the tip.",
     tools: ["Blender", "Substance Painter"]
   },
   {
-    slug: "tactical-sidearm",
-    title: "Tactical Sidearm",
+    slug: "glock",
+    title: "Glock",
     category: "game",
     catLabel: "Game Asset",
-    images: ["media/tactical-sidearm.jpg"],
     desc: "Modern compact pistol with a textured polymer grip and worn-metal slide, modeled and baked for a realistic PBR finish.",
     tools: ["Blender", "Substance Painter", "Marmoset"]
   },
   {
-    slug: "gilded-commander-1911",
-    title: "Gilded Commander 1911",
+    slug: "colt",
+    title: "Colt",
     category: "game",
     catLabel: "Game Asset",
-    images: ["media/gilded-1911.jpg"],
     desc: "Fully gold-plated 1911-style pistol with engraved filigree and mother-of-pearl grip panels, built as a high-value cosmetic variant.",
     tools: ["Blender", "Substance Painter"]
   },
   {
-    slug: "the-last-message-leather-satchel",
-    title: "The Last Message — Leather Satchel",
+    slug: "bag",
+    title: "Bag",
     category: "game",
     catLabel: "Game Asset",
-    images: ["media/satchel-top.jpg", "media/satchel-back.jpg"],
     desc: "Worn leather satchel prop with a branded wax-stamped clasp, stitched edging and a shoulder strap, modeled for a narrative item pickup.",
     tools: ["Blender", "Substance Painter"]
   },
   {
-    slug: "hollywood-vanity-set",
-    title: "Hollywood Vanity Set",
+    slug: "boojie-stand",
+    title: "Boojie Stand",
     category: "arch",
     catLabel: "Architecture",
-    images: ["media/vanity-set.jpg"],
     desc: "Backstage dressing table scene with a bulb-lit mirror arch, velvet drapery and a tufted stool, staged and lit for a warm theatrical mood.",
     tools: ["Blender", "Cycles"]
   },
@@ -175,88 +168,78 @@ const PROJECTS = [
     title: "Stylised Bedroom",
     category: "arch",
     catLabel: "Architecture",
-    images: ["media/stylised-bedroom.jpg"],
     desc: "Cel-shaded bedroom interior with a built-in bookshelf and sunset-lit window, exploring a flat toon-shaded lighting approach.",
     tools: ["Blender", "Cycles"]
   },
   {
-    slug: "modern-kitchen-interior",
-    title: "Modern Kitchen Interior",
+    slug: "kitchen",
+    title: "Kitchen",
     category: "arch",
     catLabel: "Architecture",
-    images: ["media/modern-kitchen.jpg"],
-    desc: "Photoreal corner kitchen build with oak cabinetry, dark tile splashback and an integrated oven, lit with natural daylight.",
-    tools: ["Blender", "Cycles"]
+    desc: "Walkthrough of a photoreal corner kitchen build with oak cabinetry, dark tile splashback and an integrated oven, lit with natural daylight.",
+    tools: ["Blender", "Cycles", "DaVinci Resolve"]
   },
   {
     slug: "pure-beauty-product-render",
     title: "Pure Beauty — Product Render",
     category: "custom",
     catLabel: "Custom Work / Ads",
-    images: ["media/pure-beauty-jar.jpg"],
     desc: "Studio-lit cosmetics jar render with custom branding and label, built as a mockup for a client product shoot.",
     tools: ["Blender", "Cycles"]
   },
   {
-    slug: "sauvage-product-ad-concept",
-    title: "Sauvage — Product Ad Concept",
+    slug: "dior-xeagle-slow-ad",
+    title: "Dior Xeagle Slow Ad",
     category: "custom",
     catLabel: "Custom Work / Ads",
-    images: ["media/sauvage-concept.jpg"],
-    desc: "Fragrance ad concept pairing a glass bottle render with a fighter jet flyby, composited for a bold action-driven campaign look.",
+    desc: "Slow-motion fragrance ad concept pairing a glass bottle render with a fighter jet flyby, composited for a bold action-driven campaign look.",
     tools: ["Blender", "Cycles", "Compositing"]
   },
   {
-    slug: "airbase-fragrance-concept",
-    title: "Airbase Fragrance Concept",
+    slug: "sauvage-ad",
+    title: "Sauvage Ad",
     category: "custom",
     catLabel: "Custom Work / Ads",
-    images: ["media/airbase-fragrance.jpg"],
-    desc: "Alternate fragrance ad concept set against a desert airbase backdrop, exploring a more rugged, cinematic product placement.",
+    desc: "Fragrance ad concept set against a desert airbase backdrop, exploring a rugged, cinematic product placement.",
     tools: ["Blender", "Cycles", "Compositing"]
   },
   {
-    slug: "synthwave-skyline",
-    title: "Synthwave Skyline",
+    slug: "infinite-drive",
+    title: "Infinite Drive",
     category: "custom",
     catLabel: "Custom Work / Ads",
-    images: ["media/synthwave-skyline.jpg"],
     desc: "Retro synthwave cityscape with a chrome sedan on a reflective highway, built around a saturated sunset palette and mirrored water.",
     tools: ["Blender", "Cycles", "Compositing"]
   },
   {
-    slug: "night-city-flyover",
-    title: "Night City Flyover",
+    slug: "dystopian",
+    title: "Dystopian",
     category: "custom",
     catLabel: "Custom Work / Ads",
-    images: ["media/nightcity-flyover.jpg"],
-    desc: "Aerial cyberpunk street scene lined with animated billboards and traffic, built to explore dense neon-lit city composition.",
+    desc: "Aerial cyberpunk street flyover lined with animated billboards and traffic, built to explore dense neon-lit city composition.",
     tools: ["Blender", "Cycles"]
   },
   {
-    slug: "night-city-hud-overlay",
-    title: "Night City — HUD Overlay",
+    slug: "cyber-city",
+    title: "Cyber City",
     category: "custom",
     catLabel: "Custom Work / Ads",
-    images: ["media/nightcity-hud.jpg"],
     desc: "First-person cyberpunk skyline shot with a UI/HUD overlay pass, framing a distant tower billboard through a vehicle window.",
     tools: ["Blender", "Cycles", "Compositing"]
   },
   {
-    slug: "warzone-skyline",
-    title: "Warzone Skyline",
+    slug: "hd2-city",
+    title: "HD2 City",
     category: "custom",
     catLabel: "Custom Work / Ads",
-    images: ["media/warzone-skyline.jpg"],
     desc: "Silhouetted ruined cityscape under a burning orange sky, with a fighter jet passing overhead — a mood study in scale and atmosphere.",
     tools: ["Blender", "Cycles", "Compositing"]
   },
   {
-    slug: "missile-strike-ocean-chase",
-    title: "Missile Strike — Ocean Chase",
+    slug: "custom-jet",
+    title: "Custom Jet",
     category: "custom",
     catLabel: "Custom Work / Ads",
-    images: ["media/missile-chase.jpg"],
     desc: "Dynamic low-altitude missile shot skimming the ocean surface, built around motion blur and spray effects for a high-speed feel.",
     tools: ["Blender", "Cycles", "Compositing"]
   },
@@ -265,7 +248,6 @@ const PROJECTS = [
     title: "Mesh Simplification Addon",
     category: "technical",
     catLabel: "Technical / R&D",
-    images: [],
     desc: "Blender Python addon implementing Vertex Clustering, Edge Collapse and QEM decimation, benchmarked for 3D-print infill efficiency.",
     tools: ["Python", "Blender API"]
   },
