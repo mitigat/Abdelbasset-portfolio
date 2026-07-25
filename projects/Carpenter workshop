@@ -71,7 +71,7 @@
           <a href="https://www.artstation.com/mitigat_eth2">ArtStation &#8599;</a>
           <a href="https://www.tiktok.com/@elster0512?_r=1&_t=ZS-98CfvBlmG8L">TikTok &#8599;</a>
           <a href="https://www.youtube.com/@LSTR-1337">Youtube &#8599;</a>
-          <a href="akrasia._." onclick="navigator.clipboard.writeText('yourusername'); this.textContent='Copied!'; setTimeout(() => this.textContent='akrasia._. (click to copy)', 1500); return false;">akrasia._. (click to copy)</a>
+          <a href="akrasia._." onclick="navigator.clipboard.writeText('akrasia._.'); this.textContent='Copied!'; setTimeout(() => this.textContent='akrasia._. (click to copy)', 1500); return false;">akrasia._. (click to copy)</a>
         </div>
       </div>
       <div class="foot-meta">
@@ -84,7 +84,7 @@
 
 <script>
 const PROJECT_TITLE = "Carpenter workshop";
-const PROJECT_SLUG = "Carpenter workshop";
+const PROJECT_SLUG = "carpenter-workshop";
 </script>
 <script src="../background.js" defer></script>
 <script src="../carousel.js" defer></script>
