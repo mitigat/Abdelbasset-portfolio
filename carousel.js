@@ -1,8 +1,8 @@
 /* Shared script for project detail pages.
    Detection order:
-     1. media/{slug}.mp4 — if it exists, show a video player (poster = media/{slug}-1.jpg).
-     2. Otherwise, probe media/{slug}-1.jpg, {slug}-2.jpg, ... and build a photo carousel.
-   Just drop correctly-named files into /media — no code edits needed.
+     1. media/{slug}.mp4 — if it exists, show a video player (poster = media/{slug}-1.jpg or .png).
+     2. Otherwise, probe media/{slug}-1.jpg/.png, {slug}-2.jpg/.png, ... and build a photo carousel.
+   Just drop correctly-named files into /media (jpg or png, either works) — no code edits needed.
    Expects a global PROJECT_SLUG string (and PROJECT_TITLE) defined inline before this file loads. */
 (function(){
   const frame = document.getElementById('carouselFrame');
@@ -14,16 +14,23 @@
   const title = (typeof PROJECT_TITLE !== 'undefined') ? PROJECT_TITLE : '';
   const MAX_PROBE = 30;
   let images = [];
+  let posterSrc = null;
   let current = 0;
 
-  function probeImage(n){
+  function tryLoad(src){
     return new Promise(resolve => {
-      const src = `../media/${slug}-${n}.jpg`;
       const img = new Image();
       img.onload = () => resolve(src);
       img.onerror = () => resolve(null);
       img.src = src;
     });
+  }
+
+  async function probeImage(n){
+    // Try jpg first, then png, for a given index.
+    const jpg = await tryLoad(`../media/${slug}-${n}.jpg`);
+    if(jpg) return jpg;
+    return await tryLoad(`../media/${slug}-${n}.png`);
   }
 
   function probeVideo(){
@@ -37,7 +44,7 @@
   }
 
   function renderVideo(src){
-    const poster = `../media/${slug}-1.jpg`;
+    const poster = posterSrc || '';
     frame.innerHTML = `<video src="${src}" poster="${poster}" controls playsinline style="width:100%;height:100%;object-fit:contain;background:#140D1F;"></video>`;
     if(counter) counter.style.display = 'none';
     if(thumbs) thumbs.innerHTML = '';
@@ -45,7 +52,7 @@
 
   function renderFrame(){
     if(images.length === 0){
-      frame.innerHTML = `<div class="carousel-placeholder">DROP PHOTOS NAMED "${slug}-1.jpg", "${slug}-2.jpg"... INTO /media FOR<br>— ${title} —</div>`;
+      frame.innerHTML = `<div class="carousel-placeholder">DROP PHOTOS NAMED "${slug}-1.jpg" (OR .png), "${slug}-2.jpg"... INTO /media FOR<br>— ${title} —</div>`;
       if(counter) counter.style.display = 'none';
       return;
     }
@@ -92,6 +99,7 @@
   async function init(){
     const videoSrc = await probeVideo();
     if(videoSrc){
+      posterSrc = await tryLoad(`../media/${slug}-1.jpg`) || await tryLoad(`../media/${slug}-1.png`);
       renderVideo(videoSrc);
       return;
     }
@@ -105,5 +113,3 @@
 
   init();
 })();
-
-
