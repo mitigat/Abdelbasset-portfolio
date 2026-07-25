@@ -8,7 +8,10 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function mediaMarkup(p){
-    return `<img src="media/${p.slug}-1.jpg" alt="${p.title}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'placeholder-label',innerHTML:'DROP IMAGE NAMED &quot;${p.slug}-1.jpg&quot; INTO /media FOR<br>— ${p.title} —'}))">`;
+    const jpg = `media/${p.slug}-1.jpg`;
+    const png = `media/${p.slug}-1.png`;
+    const placeholder = `DROP IMAGE NAMED &quot;${p.slug}-1.jpg&quot; (OR .png) INTO /media FOR<br>— ${p.title} —`;
+    return `<img src="${jpg}" alt="${p.title}" loading="lazy" data-fallback="${png}" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback; this.removeAttribute('data-fallback');} else {this.replaceWith(Object.assign(document.createElement('span'),{className:'placeholder-label',innerHTML:'${placeholder}'}));}">`;
   }
 
   function attachTilt(card){
